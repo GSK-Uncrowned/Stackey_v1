@@ -1,0 +1,38 @@
+/* This sets up the links so the line knows where to sit */
+nav ul li a {
+    text-decoration: none;
+    color: black; 
+    position: relative; /* This is the anchor */
+    padding: 8px 0;
+    font-family: sans-serif;
+    transition: color 0.3s;
+}
+
+/* This is the "magic line" - invisible at first */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;                /* Start at 0 width */
+    height: 2px;             /* Thickness of the line */
+    bottom: 0;
+    left: 50%;               /* Start in the middle */
+    background-color: black;  /* Change this to your "Stackey" color */
+    transform: translateX(-50%); /* Keeps it centered */
+    transition: width 0.2s ease-in-out; /* The "spread" animation */
+}
+
+/* When the page is SELECTED, the line spreads out */
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* This also makes it spread when you hover with your mouse! */
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Optional: Makes the text glow a bit when selected */
+nav ul li a.active {
+    color: black;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
